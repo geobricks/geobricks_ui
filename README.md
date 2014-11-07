@@ -1,4 +1,4 @@
-geobricks_ui
+Geobricks UI
 ============
 
 Geobricks user interface.
