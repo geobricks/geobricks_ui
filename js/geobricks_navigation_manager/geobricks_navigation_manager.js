@@ -29,6 +29,7 @@ define(['jquery',
         var template = $(templates).filter('#main_structure').html();
         var view = {
             toggle_navigation: translate.toggle_navigation,
+            home: translate.home,
             scheduler: translate.scheduler,
             scheduler_link: '#/scheduler/' + this.CONFIG.lang,
             browse: translate.browse,

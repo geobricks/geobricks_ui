@@ -1,6 +1,7 @@
 define({
     'root' : {
         'geobricks': 'Geobricks',
+        'home': 'Home',
         'toggle_navigation': 'Toggle Navigation',
         'scheduler': 'Scheduler',
         'browse': 'Browse',
