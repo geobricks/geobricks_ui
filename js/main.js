@@ -3,7 +3,8 @@ require.config({
     baseUrl: 'js/libs',
 
     paths: {
-        geobricks_navigation_manager: '../geobricks_navigation_manager/geobricks_navigation_manager'
+        geobricks_navigation_manager: '../geobricks_navigation_manager/geobricks_navigation_manager',
+        geobricks_home: '../geobricks_home/geobricks_home'
     },
 
     shim: {
@@ -55,6 +56,12 @@ require(['jquery',
             NAV_MGR.init({
                 lang: lang,
                 placeholder_id: 'placeholder'
+            });
+            require(['geobricks_home'], function(HOME) {
+                HOME.init({
+                    lang: lang,
+                    placeholder_id: 'main_content'
+                });
             });
         });
     });

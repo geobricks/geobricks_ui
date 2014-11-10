@@ -51,3 +51,13 @@ html, body {
 a {
   color: #174C74 !important;
 }
+
+.bs-docs-header {
+  margin-top: -20px;
+  background-color: #379BCE;
+  color: #ffffff;
+}
+
+.bs-docs-masthead, .bs-docs-header {
+  background: #379bce none;
+}
