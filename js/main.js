@@ -5,7 +5,8 @@ require.config({
     paths: {
         geobricks_navigation_manager: '../geobricks_navigation_manager/geobricks_navigation_manager',
         geobricks_home: '../geobricks_home/geobricks_home',
-        geobricks_download: '../geobricks_download/geobricks_download'
+        geobricks_download: '../geobricks_download/geobricks_download',
+        geobricks_browse: '../geobricks_browse/geobricks_browse'
     },
 
     shim: {
@@ -38,7 +39,9 @@ require(['jquery',
             '(/)home(/)'            :   'home',
             '(/)home(/):lang'       :   'home',
             '(/)download(/)'        :   'download',
-            '(/)download(/):lang'   :   'download'
+            '(/)download(/):lang'   :   'download',
+            '(/)browse(/)'          :   'browse',
+            '(/)browse(/):lang'     :   'browse'
         },
 
         /* Overwrite language settings. */
@@ -75,6 +78,17 @@ require(['jquery',
         this.init_language(lang);
         require(['geobricks_download'], function (DOWNLOAD) {
             DOWNLOAD.init({
+                lang: lang,
+                placeholder_id: 'main_content'
+            });
+        });
+    });
+
+    /* Define routes endpoints: browse. */
+    app_router.on('route:browse', function (lang) {
+        this.init_language(lang);
+        require(['geobricks_browse'], function (BROWSE) {
+            BROWSE.init({
                 lang: lang,
                 placeholder_id: 'main_content'
             });
