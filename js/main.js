@@ -36,6 +36,15 @@ require(['jquery',
     /* Define the router. */
     var AppRouter = Backbone.Router.extend({
 
+        modules: [
+            'home',
+            'download',
+            'browse',
+            'export',
+            'scheduler',
+            'configuration'
+        ],
+
         /* Define the routes. */
         routes: {
             ''                          :   'home',
@@ -57,85 +66,44 @@ require(['jquery',
         init_language: function (lang) {
             lang = (lang != null) ? lang : 'en';
             require.config({'locale': lang});
+            require(['geobricks_navigation_manager'], function(NAV_MGR) {
+                NAV_MGR.init({
+                    lang: lang,
+                    placeholder_id: 'placeholder'
+                });
+            });
+        },
+
+        route_module: function(module_name) {
+            app_router.on('route:' + module_name, function (lang) {
+                this.init_language(lang);
+                require(['geobricks_' + module_name], function (MODULE) {
+                    MODULE.init({
+                        lang: lang,
+                        placeholder_id: 'main_content'
+                    });
+                });
+            });
         }
 
-    });
-
-    require(['geobricks_navigation_manager'], function(NAV_MGR) {
-        NAV_MGR.init({
-            lang: 'lang',
-            placeholder_id: 'placeholder'
-        });
     });
 
     /* Initiate router. */
     var app_router = new AppRouter;
 
-    /* Define routes endpoints: home. */
-    app_router.on('route:home', function (lang) {
-        this.init_language(lang);
-        require(['geobricks_home'], function (HOME) {
-            HOME.init({
-                lang: lang,
-                placeholder_id: 'main_content'
-            });
-        });
-    });
+    /* Define modules. */
+    var modules = [
+        'home',
+        'download',
+        'browse',
+        'export',
+        'scheduler',
+        'configuration'
+    ];
 
-    /* Define routes endpoints: download. */
-    app_router.on('route:download', function (lang) {
-        this.init_language(lang);
-        require(['geobricks_download'], function (DOWNLOAD) {
-            DOWNLOAD.init({
-                lang: lang,
-                placeholder_id: 'main_content'
-            });
-        });
-    });
-
-    /* Define routes endpoints: browse. */
-    app_router.on('route:browse', function (lang) {
-        this.init_language(lang);
-        require(['geobricks_browse'], function (BROWSE) {
-            BROWSE.init({
-                lang: lang,
-                placeholder_id: 'main_content'
-            });
-        });
-    });
-
-    /* Define routes endpoints: export. */
-    app_router.on('route:export', function (lang) {
-        this.init_language(lang);
-        require(['geobricks_export'], function (EXPORT) {
-            EXPORT.init({
-                lang: lang,
-                placeholder_id: 'main_content'
-            });
-        });
-    });
-
-    /* Define routes endpoints: scheduler. */
-    app_router.on('route:scheduler', function (lang) {
-        this.init_language(lang);
-        require(['geobricks_scheduler'], function (SCHEDULER) {
-            SCHEDULER.init({
-                lang: lang,
-                placeholder_id: 'main_content'
-            });
-        });
-    });
-
-    /* Define routes endpoints: configuration. */
-    app_router.on('route:configuration', function (lang) {
-        this.init_language(lang);
-        require(['geobricks_configuration'], function (CONFIGURATION) {
-            CONFIGURATION.init({
-                lang: lang,
-                placeholder_id: 'main_content'
-            });
-        });
-    });
+    /* Route modules. */
+    for (var module in modules)
+        app_router.route_module(modules[module]);
 
     /* Initiate Backbone history. */
     Backbone.history.start();
