@@ -6,6 +6,7 @@ define({
         'scheduler': 'Scheduler',
         'browse': 'Browse',
         'download': 'Download',
+        'export': 'Export',
         'configuration': 'Configuration',
         'signin': 'Sign In'
     },

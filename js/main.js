@@ -4,7 +4,8 @@ require.config({
 
     paths: {
         geobricks_navigation_manager: '../geobricks_navigation_manager/geobricks_navigation_manager',
-        geobricks_home: '../geobricks_home/geobricks_home'
+        geobricks_home: '../geobricks_home/geobricks_home',
+        geobricks_download: '../geobricks_download/geobricks_download'
     },
 
     shim: {
@@ -33,9 +34,11 @@ require(['jquery',
 
         /* Define the routes. */
         routes: {
-            ''                  :   'home',
-            '(/)home(/)'        :   'home',
-            '(/)home(/):lang'   :   'home'
+            ''                      :   'home',
+            '(/)home(/)'            :   'home',
+            '(/)home(/):lang'       :   'home',
+            '(/)download(/)'        :   'download',
+            '(/)download(/):lang'   :   'download'
         },
 
         /* Overwrite language settings. */
@@ -46,22 +49,34 @@ require(['jquery',
 
     });
 
+    require(['geobricks_navigation_manager'], function(NAV_MGR) {
+        NAV_MGR.init({
+            lang: 'lang',
+            placeholder_id: 'placeholder'
+        });
+    });
+
     /* Initiate router. */
     var app_router = new AppRouter;
 
     /* Define routes endpoints: home. */
     app_router.on('route:home', function (lang) {
         this.init_language(lang);
-        require(['geobricks_navigation_manager'], function(NAV_MGR) {
-            NAV_MGR.init({
+        require(['geobricks_home'], function (HOME) {
+            HOME.init({
                 lang: lang,
-                placeholder_id: 'placeholder'
+                placeholder_id: 'main_content'
             });
-            require(['geobricks_home'], function(HOME) {
-                HOME.init({
-                    lang: lang,
-                    placeholder_id: 'main_content'
-                });
+        });
+    });
+
+    /* Define routes endpoints: download. */
+    app_router.on('route:download', function (lang) {
+        this.init_language(lang);
+        require(['geobricks_download'], function (DOWNLOAD) {
+            DOWNLOAD.init({
+                lang: lang,
+                placeholder_id: 'main_content'
             });
         });
     });

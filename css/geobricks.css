@@ -16,6 +16,9 @@ html, body {
 .fa.fa-wrench {
   margin-top: 5px; }
 
+.fa.fa-share {
+  margin-top: 5px; }
+
 #signin_button {
   margin-top: 10px; }
 
@@ -40,7 +43,7 @@ a {
   color: #174C74 !important; }
 
 .bs-docs-header {
-  margin-top: -20px;
+  transform: translate(0, 5%);
   background-color: #379BCE;
   color: #ffffff; }
 
