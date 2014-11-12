@@ -47,19 +47,13 @@ require(['jquery',
 
         /* Define the routes. */
         routes: {
-            ''                          :   'home',
-            '(/)home(/)'                :   'home',
-            '(/)home(/):lang'           :   'home',
-            '(/)download(/)'            :   'download',
-            '(/)download(/):lang'       :   'download',
-            '(/)browse(/)'              :   'browse',
-            '(/)browse(/):lang'         :   'browse',
-            '(/)export(/)'              :   'export',
-            '(/)export(/):lang'         :   'export',
-            '(/)scheduler(/)'           :   'scheduler',
-            '(/)scheduler(/):lang'      :   'scheduler',
-            '(/)configuration(/)'       :   'configuration',
-            '(/)configuration(/):lang'  :   'configuration'
+            ''                              :   'home',
+            '(/):lang(/)home(/)'            :   'home',
+            '(/):lang(/)download(/)'        :   'download',
+            '(/):lang(/)browse(/)'          :   'browse',
+            '(/):lang(/)export(/)'          :   'export',
+            '(/):lang(/)scheduler(/)'       :   'scheduler',
+            '(/):lang(/)configuration(/)'   :   'configuration'
         },
 
         /* Overwrite language settings. */
