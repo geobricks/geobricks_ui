@@ -49,3 +49,28 @@ a {
 
 .bs-docs-masthead, .bs-docs-header {
   background: #379bce none; }
+
+.chosen-single {
+  height: 35px !important;
+  line-height: 35px !important; }
+
+.chosen-container .chosen-container-multi {
+  height: 35px !important;
+  line-height: 35px !important; }
+
+.search-field .default {
+  height: 35px !important;
+  line-height: 35px !important; }
+
+.chosen-choices .search-choice {
+  height: 35px !important;
+  line-height: 35px !important; }
+
+.chosen-container-single .chosen-single div {
+  top: 6px !important; }
+
+.search-choice {
+  padding-top: 0px; }
+
+.search-choice-close {
+  top: 12px; }

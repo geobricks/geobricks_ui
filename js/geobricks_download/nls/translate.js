@@ -3,7 +3,8 @@ define({
         title: 'Download',
         subtitle: 'Acquire geospatial data from public available data sources.',
         filters: 'Filters',
-        progress: 'Progress'
+        progress: 'Progress',
+        datasources: 'Datasources'
     },
     fr : true,
     es : true
