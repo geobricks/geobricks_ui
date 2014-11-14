@@ -37,7 +37,8 @@ define(['jquery',
             subtitle: translate.subtitle,
             filters: translate.filters,
             progress: translate.progress,
-            datasources: translate.datasources
+            datasources: translate.datasources,
+            please_select: translate.please_select
         };
         var render = Mustache.render(template, view);
         $('#' + this.CONFIG.placeholder_id).html(render);
@@ -57,6 +58,7 @@ define(['jquery',
 
                 /* Fill the drop-down. */
                 var s = '';
+                s += '<option value=""></option>';
                 for (var i = 0 ; i < json.length ; i++) {
                     s += '<option value="' + json[i].name + '">';
                     s += json[i].name + ' - ' + json[i].description;
@@ -65,7 +67,7 @@ define(['jquery',
 
                 /* Trigger Chosen. */
                 $('#datasource_selector').html(s);
-                $('#datasource_selector').chosen();
+                $('#datasource_selector').chosen({disable_search_threshold: 10});
 
             }
 
