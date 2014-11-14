@@ -1,8 +1,8 @@
 define({
-    'root' : {
-        'title': 'Export',
-        'subtitle': 'Download available resources on your computer.'
+    root : {
+        title: 'Export',
+        subtitle: 'Download available resources on your computer.'
     },
-    'fr' : true,
-    'es' : true
+    fr : true,
+    es : true
 });

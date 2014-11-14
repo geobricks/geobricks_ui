@@ -1,8 +1,8 @@
 define({
-    'root' : {
-        'title': 'Configuration',
-        'subtitle': 'System setup.'
+    root : {
+        title: 'Configuration',
+        subtitle: 'System setup.'
     },
-    'fr' : true,
-    'es' : true
+    fr : true,
+    es : true
 });

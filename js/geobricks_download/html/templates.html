@@ -12,6 +12,29 @@
         </div>
     </div>
     <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+        <ul class='nav nav-tabs' role='tablist' style='margin-top: 16px;' id=''>
+            <li class='active'>
+                <a href='#filters_tab' role='tab' data-toggle='tab'>
+                    {{filters}}
+                </a>
+            </li>
+            <li>
+                <a href='#progress_tab' role='tab' data-toggle='tab'>
+                    {{progress}}
+                </a>
+            </li>
+        </ul>
+        <div class='tab-content'>
+            <div class='tab-pane active' id='filters_tab'>
+                <div id='filters_panel'>
 
+                </div>
+            </div>
+            <div class='tab-pane' id='progress_tab'>
+                <div id='progress_panel'>
+
+                </div>
+            </div>
+        </div>
     </div>
 </template>

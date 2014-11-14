@@ -32,7 +32,9 @@ define(['jquery',
         var template = $(templates).filter('#main_structure').html();
         var view = {
             title: translate.title,
-            subtitle: translate.subtitle
+            subtitle: translate.subtitle,
+            filters: translate.filters,
+            progress: translate.progress
         };
         var render = Mustache.render(template, view);
         $('#' + this.CONFIG.placeholder_id).html(render);
