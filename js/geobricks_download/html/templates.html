@@ -36,7 +36,7 @@
 
                             </select>
                         </div>
-                        <div id='dynamic_selectors'>
+                        <div id='dynamic_filters'>
 
                         </div>
                     </div>
@@ -48,5 +48,16 @@
                 </div>
             </div>
         </div>
+    </div>
+</template>
+
+<template id='filter_structure'>
+    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12' style='margin-top: 16px;'>
+        <label for='{{filter_id}}'>
+            {{filter_label}}
+        </label>
+        <select style='width: 100%;' id='{{filter_id}}' data-placeholder={{please_select}}>
+
+        </select>
     </div>
 </template>

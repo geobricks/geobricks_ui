@@ -5,7 +5,8 @@ define({
         filters: 'Filters',
         progress: 'Progress',
         datasources: 'Datasources',
-        please_select: 'Please Select...'
+        please_select: 'Please Select...',
+        countries: 'Countries'
     },
     fr : true,
     es : true

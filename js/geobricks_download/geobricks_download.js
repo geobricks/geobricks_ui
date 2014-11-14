@@ -73,6 +73,60 @@ define(['jquery',
 
         });
 
+        this.add_countries_filter('countries')
+
+    };
+
+    DOWNLOAD.prototype.add_countries_filter = function(prefix) {
+
+        /* Render the filter structure. */
+        var template = $(templates).filter('#filter_structure').html();
+        var view = {
+            filter_id: prefix + '_filter',
+            filter_label: translate[prefix],
+            please_select: translate.please_select
+        };
+        var render = Mustache.render(template, view);
+        $('#dynamic_filters').append(render);
+
+        /* Fill data source list and initialize Chosen. */
+        $.ajax({
+
+            type: 'GET',
+            url: 'http://localhost:5555/browse/modis/countries/',
+
+            success: function (response) {
+
+                /* Cast the response to JSON, if needed. */
+                var json = response;
+                if (typeof json == 'string')
+                    json = $.parseJSON(response);
+
+                var countries = json.sort(function(a, b) {
+                    return a.gaul_label > b.gaul_label;
+                });
+
+                /* Fill the drop-down. */
+                var s = '';
+                s += '<option value=""></option>';
+                for (var i = 0 ; i < countries.length ; i++) {
+                    s += '<option ';
+                    s += 'data-gaul="' + countries[i].gaul_code + '" ';
+                    s += 'data-iso2="' + countries[i].iso2_code + '" ';
+                    s += 'data-iso3="' + countries[i].iso3_code + '" ';
+                    s += '>';
+                    s += countries[i].gaul_label;
+                    s += '</option>';
+                }
+
+                /* Trigger Chosen. */
+                $('#' + prefix + '_filter').html(s);
+                $('#' + prefix + '_filter').chosen({disable_search_threshold: 10});
+
+            }
+
+        });
+
     };
 
     return new DOWNLOAD();
