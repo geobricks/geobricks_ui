@@ -75,5 +75,14 @@ a {
 .search-choice-close {
   top: 12px; }
 
-.top-space {
+.top-space-1X {
   margin-top: 16px; }
+
+.top-space-2X {
+  margin-top: 32px; }
+
+.top-space-3X {
+  margin-top: 48px; }
+
+.top-space-2X {
+  margin-top: 64px; }

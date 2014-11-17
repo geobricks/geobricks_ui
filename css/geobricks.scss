@@ -102,6 +102,24 @@ a {
   top: 12px;
 }
 
-.top-space {
-  margin-top: 16px;
+$space: 16px;
+
+@mixin top-space($times) {
+  margin-top: $space * $times
+}
+
+.top-space-1X {
+  @include top-space(1)
+}
+
+.top-space-2X {
+  @include top-space(2)
+}
+
+.top-space-3X {
+  @include top-space(3)
+}
+
+.top-space-2X {
+  @include top-space(4)
 }

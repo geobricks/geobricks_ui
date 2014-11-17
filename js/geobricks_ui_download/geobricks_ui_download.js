@@ -85,6 +85,7 @@ define(['jquery',
     DOWNLOAD.prototype.build_data_source_interface = function(data_source_id) {
         var _this = this;
         Backbone.history.navigate('/en/download/modis', true);
+        $('#dynamic_filters').empty();
         require(['geobricks_ui_download_' + data_source_id], function (MODULE) {
             MODULE.init({
                 lang: _this.CONFIG.lang,
