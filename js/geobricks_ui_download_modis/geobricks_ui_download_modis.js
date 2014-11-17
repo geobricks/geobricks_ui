@@ -43,12 +43,19 @@ define(['jquery',
         var render = Mustache.render(template, view);
         $('#' + this.CONFIG.placeholder_id).html(render);
 
+        /* Cache JQuery selectors. */
+        this.countries_selector = $('#countries_selector');
+        this.products_selector = $('#products_selector');
+        this.year_selector = $('#year_selector');
+        this.from_date_selector = $('#from_date_selector');
+        this.to_date_selector = $('#to_date_selector');
+
         /* Initiate Chosen drop-downs. */
-        $('#countries_selector').chosen({disable_search_threshold: 10});
-        $('#products_selector').chosen({disable_search_threshold: 10});
-        $('#year_selector').chosen({disable_search_threshold: 10});
-        $('#from_date_selector').chosen({disable_search_threshold: 10});
-        $('#to_date_selector').chosen({disable_search_threshold: 10});
+        this.countries_selector.chosen({disable_search_threshold: 10});
+        this.products_selector.chosen({disable_search_threshold: 10});
+        this.year_selector.chosen({disable_search_threshold: 10});
+        this.from_date_selector.chosen({disable_search_threshold: 10});
+        this.to_date_selector.chosen({disable_search_threshold: 10});
 
         /* Populate countries. */
         this.populate_countries();
@@ -59,6 +66,9 @@ define(['jquery',
     };
 
     UI_MODIS.prototype.populate_countries = function() {
+
+        /* This. */
+        var _this = this;
 
         /* Fill data source list and initialize Chosen. */
         $.ajax({
@@ -92,7 +102,7 @@ define(['jquery',
                 }
 
                 /* Trigger Chosen. */
-                $('#countries_selector').html(s).trigger('chosen:updated');
+                _this.countries_selector.html(s).trigger('chosen:updated');
                 $('#countries_label').html(translate.countries);
 
             }
@@ -130,7 +140,7 @@ define(['jquery',
                 }
 
                 /* Trigger Chosen. */
-                $('#products_selector').html(s).trigger('chosen:updated').change(function() {
+                _this.products_selector.html(s).trigger('chosen:updated').change(function() {
                     _this.populate_years();
                 });
                 $('#products_label').html(translate.products);
@@ -142,8 +152,11 @@ define(['jquery',
 
     UI_MODIS.prototype.populate_years = function() {
 
+        /* This. */
+        var _this = this;
+
         /* Fetch selected product. */
-        var product = $('#products_selector').find('option:selected').val();
+        var product = this.products_selector.find('option:selected').val();
 
         /* Fill data source list and initialize Chosen. */
         $.ajax({
@@ -169,8 +182,53 @@ define(['jquery',
                 }
 
                 /* Trigger Chosen. */
-                $('#year_selector').html(s).trigger('chosen:updated');
-                $('#year_label').html(translate.products);
+                _this.year_selector.html(s).trigger('chosen:updated').change(function() {
+                    _this.populate_dates();
+                });
+                $('#year_label').html(translate.year);
+
+            }
+
+        });
+    };
+
+    UI_MODIS.prototype.populate_dates = function() {
+
+        /* This. */
+        var _this = this;
+
+        /* Fetch selected product. */
+        var product = this.products_selector.find('option:selected').val();
+        var year = this.year_selector.find('option:selected').val();
+
+        /* Fill data source list and initialize Chosen. */
+        $.ajax({
+
+            type: 'GET',
+            url: this.CONFIG.url_products + product + '/' + year + '/',
+
+            success: function (response) {
+
+                /* Cast the response to JSON, if needed. */
+                var json = response;
+                if (typeof json == 'string')
+                    json = $.parseJSON(response);
+
+                /* Fill the drop-down. */
+                var s = '';
+                s += '<option value=""></option>';
+                for (var i = 0 ; i < json.length ; i++) {
+                    s += '<option ';
+                    s += 'value="' + json[i].code + '">';
+                    s += json[i].label;
+                    s += '</option>';
+                }
+
+                /* Trigger Chosen. */
+                _this.from_date_selector.html(s).trigger('chosen:updated');
+                _this.to_date_selector.html(s).trigger('chosen:updated');
+                $('#from_date_label').html(translate.from_date);
+                $('#to_date_label').html(translate.to_date);
 
             }
 
