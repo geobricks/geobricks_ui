@@ -11,7 +11,8 @@ define(['jquery',
         this.CONFIG = {
             lang: 'en',
             placeholder_id: 'placeholder',
-            url_countries: 'http://localhost:5555/browse/modis/countries/'
+            url_countries: 'http://localhost:5555/browse/modis/countries/',
+            url_products: 'http://localhost:5555/browse/modis/'
         };
 
     }
@@ -52,6 +53,9 @@ define(['jquery',
         /* Populate countries. */
         this.populate_countries();
 
+        /* Populate drop-downs. **/
+        this.populate_products();
+
     };
 
     UI_MODIS.prototype.populate_countries = function() {
@@ -88,13 +92,89 @@ define(['jquery',
                 }
 
                 /* Trigger Chosen. */
-                $('#countries_selector').html(s);
-                $('#countries_selector').trigger('chosen:updated');
+                $('#countries_selector').html(s).trigger('chosen:updated');
+                $('#countries_label').html(translate.countries);
 
             }
 
         });
 
+    };
+
+    UI_MODIS.prototype.populate_products = function() {
+
+        /* This. */
+        var _this = this;
+
+        /* Fill data source list and initialize Chosen. */
+        $.ajax({
+
+            type: 'GET',
+            url: this.CONFIG.url_products,
+
+            success: function (response) {
+
+                /* Cast the response to JSON, if needed. */
+                var json = response;
+                if (typeof json == 'string')
+                    json = $.parseJSON(response);
+
+                /* Fill the drop-down. */
+                var s = '';
+                s += '<option value=""></option>';
+                for (var i = 0 ; i < json.length ; i++) {
+                    s += '<option ';
+                    s += 'value="' + json[i].code + '">';
+                    s += json[i].label;
+                    s += '</option>';
+                }
+
+                /* Trigger Chosen. */
+                $('#products_selector').html(s).trigger('chosen:updated').change(function() {
+                    _this.populate_years();
+                });
+                $('#products_label').html(translate.products);
+
+            }
+
+        });
+    };
+
+    UI_MODIS.prototype.populate_years = function() {
+
+        /* Fetch selected product. */
+        var product = $('#products_selector').find('option:selected').val();
+
+        /* Fill data source list and initialize Chosen. */
+        $.ajax({
+
+            type: 'GET',
+            url: this.CONFIG.url_products + product + '/',
+
+            success: function (response) {
+
+                /* Cast the response to JSON, if needed. */
+                var json = response;
+                if (typeof json == 'string')
+                    json = $.parseJSON(response);
+
+                /* Fill the drop-down. */
+                var s = '';
+                s += '<option value=""></option>';
+                for (var i = 0 ; i < json.length ; i++) {
+                    s += '<option ';
+                    s += 'value="' + json[i].code + '">';
+                    s += json[i].label;
+                    s += '</option>';
+                }
+
+                /* Trigger Chosen. */
+                $('#year_selector').html(s).trigger('chosen:updated');
+                $('#year_label').html(translate.products);
+
+            }
+
+        });
     };
 
     return new UI_MODIS();
