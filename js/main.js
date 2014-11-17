@@ -97,13 +97,21 @@ require(['jquery',
     for (var module in modules)
         app_router.route_module(modules[module]);
 
-    /* Initiate Download MODIS. */
+    /* Initiate Download focused on MODIS. */
     app_router.on('route:download_modis', function (lang) {
         this.init_language(lang);
         require(['geobricks_ui_download'], function (MODULE) {
             MODULE.init({
                 lang: lang,
                 placeholder_id: 'main_content'
+            });
+            require(['geobricks_ui_download_modis'], function (MODULE) {
+                MODULE.init({
+                    lang: lang,
+                    placeholder_id: 'dynamic_filters'
+                });
+                $('#datasource_selector').val('MODIS');
+                $('#datasource_selector').trigger('chosen:updated');
             });
         });
     });
