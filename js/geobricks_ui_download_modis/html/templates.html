@@ -1,5 +1,52 @@
 <template id='main_structure'>
-    <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
-        MODIS UI Here.
+
+    <div class='row'>
+
+        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+            <label for='countries_selector' class='top-space'>
+                {{countries}}
+            </label>
+            <select id='countries_selector' style='width: 100%;' data-placeholder={{please_select}}>
+
+            </select>
+        </div>
+
+        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+            <label for='products_selector' class='top-space'>
+                {{products}}
+            </label>
+            <select id='products_selector' style='width: 100%;' data-placeholder={{please_select}}>
+
+            </select>
+        </div>
+
+        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+            <label for='year_selector' class='top-space'>
+                {{year}}
+            </label>
+            <select id='year_selector' style='width: 100%;' data-placeholder={{please_select}}>
+
+            </select>
+        </div>
+
+        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+            <label for='from_date_selector' class='top-space'>
+                {{from_date}}
+            </label>
+            <select id='from_date_selector' style='width: 100%;' data-placeholder={{please_select}}>
+
+            </select>
+        </div>
+
+        <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+            <label for='to_date_selector' class='top-space'>
+                {{to_date}}
+            </label>
+            <select id='to_date_selector' style='width: 100%;' data-placeholder={{please_select}}>
+
+            </select>
+        </div>
+
     </div>
+
 </template>

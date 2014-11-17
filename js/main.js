@@ -37,24 +37,16 @@ require(['jquery',
     /* Define the router. */
     var AppRouter = Backbone.Router.extend({
 
-        modules: [
-            'home',
-            'download',
-            'browse',
-            'export',
-            'scheduler',
-            'configuration'
-        ],
-
         /* Define the routes. */
         routes: {
-            ''                              :   'home',
-            '(/):lang(/)home(/)'            :   'home',
-            '(/):lang(/)download(/)'        :   'download',
-            '(/):lang(/)browse(/)'          :   'browse',
-            '(/):lang(/)export(/)'          :   'export',
-            '(/):lang(/)scheduler(/)'       :   'scheduler',
-            '(/):lang(/)configuration(/)'   :   'configuration'
+            ''                                  :   'home',
+            '(/):lang(/)home(/)'                :   'home',
+            '(/):lang(/)download(/)'            :   'download',
+            '(/):lang(/)download(/)modis(/)'    :   'download_modis',
+            '(/):lang(/)browse(/)'              :   'browse',
+            '(/):lang(/)export(/)'              :   'export',
+            '(/):lang(/)scheduler(/)'           :   'scheduler',
+            '(/):lang(/)configuration(/)'       :   'configuration'
         },
 
         /* Overwrite language settings. */
@@ -104,6 +96,17 @@ require(['jquery',
     /* Route modules. */
     for (var module in modules)
         app_router.route_module(modules[module]);
+
+    /* Initiate Download MODIS. */
+    app_router.on('route:download_modis', function (lang) {
+        this.init_language(lang);
+        require(['geobricks_ui_download'], function (MODULE) {
+            MODULE.init({
+                lang: lang,
+                placeholder_id: 'main_content'
+            });
+        });
+    });
 
     /* Initiate Backbone history. */
     Backbone.history.start();

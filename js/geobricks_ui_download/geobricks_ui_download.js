@@ -73,19 +73,18 @@ define(['jquery',
                 $('#datasource_selector').chosen({disable_search_threshold: 10});
                 $('#datasource_selector').change(function() {
                     var data_source_id = $('#' + this.id + ' option:selected').val().toLowerCase();
-                    _this.build_datasource_interface(data_source_id);
+                    _this.build_data_source_interface(data_source_id);
                 });
 
             }
 
         });
 
-        this.add_countries_filter('countries')
-
     };
 
-    DOWNLOAD.prototype.build_datasource_interface = function(data_source_id) {
+    DOWNLOAD.prototype.build_data_source_interface = function(data_source_id) {
         var _this = this;
+        Backbone.history.navigate('/en/download/modis', true);
         require(['geobricks_ui_download_' + data_source_id], function (MODULE) {
             MODULE.init({
                 lang: _this.CONFIG.lang,
