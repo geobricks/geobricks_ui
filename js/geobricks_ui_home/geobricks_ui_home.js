@@ -1,12 +1,12 @@
 define(['jquery',
         'mustache',
-        'text!../geobricks_configuration/html/templates.html',
-        'i18n!../geobricks_configuration/nls/translate',
+        'text!../geobricks_ui_home/html/templates.html',
+        'i18n!../geobricks_ui_home/nls/translate',
         'bootstrap'], function ($, Mustache, templates, translate) {
 
     'use strict';
 
-    function CONFIGURATION() {
+    function HOME() {
 
         this.CONFIG = {
             lang: 'en',
@@ -20,13 +20,10 @@ define(['jquery',
      *
      * @param config Custom configuration in JSON format to extend the default settings.
      */
-    CONFIGURATION.prototype.init = function(config) {
+    HOME.prototype.init = function(config) {
 
         /* Extend default configuration. */
         this.CONFIG = $.extend(true, {}, this.CONFIG, config);
-
-        /* Fix the language, if needed. */
-        this.CONFIG.lang = this.CONFIG.lang != null ? this.CONFIG.lang : 'en';
 
         /* Render the main structure. */
         var template = $(templates).filter('#main_structure').html();
@@ -39,6 +36,6 @@ define(['jquery',
 
     };
 
-    return new CONFIGURATION();
+    return new HOME();
 
 });

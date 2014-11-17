@@ -3,13 +3,14 @@ require.config({
     baseUrl: 'js/libs',
 
     paths: {
-        geobricks_navigation_manager: '../geobricks_navigation_manager/geobricks_navigation_manager',
-        geobricks_home: '../geobricks_home/geobricks_home',
-        geobricks_download: '../geobricks_download/geobricks_download',
-        geobricks_browse: '../geobricks_browse/geobricks_browse',
-        geobricks_export: '../geobricks_export/geobricks_export',
-        geobricks_scheduler: '../geobricks_scheduler/geobricks_scheduler',
-        geobricks_configuration: '../geobricks_configuration/geobricks_configuration'
+        geobricks_ui_navigation_manager: '../geobricks_ui_navigation_manager/geobricks_ui_navigation_manager',
+        geobricks_ui_home: '../geobricks_ui_home/geobricks_ui_home',
+        geobricks_ui_download: '../geobricks_ui_download/geobricks_ui_download',
+        geobricks_ui_download_modis: '../geobricks_ui_download_modis/geobricks_ui_download_modis',
+        geobricks_ui_browse: '../geobricks_ui_browse/geobricks_ui_browse',
+        geobricks_ui_export: '../geobricks_ui_export/geobricks_ui_export',
+        geobricks_ui_scheduler: '../geobricks_ui_scheduler/geobricks_ui_scheduler',
+        geobricks_ui_configuration: '../geobricks_ui_configuration/geobricks_ui_configuration'
     },
 
     shim: {
@@ -58,20 +59,25 @@ require(['jquery',
 
         /* Overwrite language settings. */
         init_language: function (lang) {
+
+            /* Initiate language. */
             lang = (lang != null) ? lang : 'en';
             require.config({'locale': lang});
-            require(['geobricks_navigation_manager'], function(NAV_MGR) {
+
+            /* Build navigation bar. */
+            require(['geobricks_ui_navigation_manager'], function(NAV_MGR) {
                 NAV_MGR.init({
                     lang: lang,
                     placeholder_id: 'placeholder'
                 });
             });
+
         },
 
         route_module: function(module_name) {
             app_router.on('route:' + module_name, function (lang) {
                 this.init_language(lang);
-                require(['geobricks_' + module_name], function (MODULE) {
+                require(['geobricks_ui_' + module_name], function (MODULE) {
                     MODULE.init({
                         lang: lang,
                         placeholder_id: 'main_content'

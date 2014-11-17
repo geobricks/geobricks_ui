@@ -1,7 +1,7 @@
 define(['jquery',
         'mustache',
-        'text!../geobricks_download/html/templates.html',
-        'i18n!../geobricks_download/nls/translate',
+        'text!../geobricks_ui_download/html/templates.html',
+        'i18n!../geobricks_ui_download/nls/translate',
         'chosen',
         'bootstrap'], function ($, Mustache, templates, translate, chosen) {
 
@@ -43,6 +43,9 @@ define(['jquery',
         var render = Mustache.render(template, view);
         $('#' + this.CONFIG.placeholder_id).html(render);
 
+        /* This. */
+        var _this = this;
+
         /* Fill data source list and initialize Chosen. */
         $.ajax({
 
@@ -68,6 +71,10 @@ define(['jquery',
                 /* Trigger Chosen. */
                 $('#datasource_selector').html(s);
                 $('#datasource_selector').chosen({disable_search_threshold: 10});
+                $('#datasource_selector').change(function() {
+                    var data_source_id = $('#' + this.id + ' option:selected').val().toLowerCase();
+                    _this.build_datasource_interface(data_source_id);
+                });
 
             }
 
@@ -75,6 +82,16 @@ define(['jquery',
 
         this.add_countries_filter('countries')
 
+    };
+
+    DOWNLOAD.prototype.build_datasource_interface = function(data_source_id) {
+        var _this = this;
+        require(['geobricks_ui_download_' + data_source_id], function (MODULE) {
+            MODULE.init({
+                lang: _this.CONFIG.lang,
+                placeholder_id: 'dynamic_filters'
+            });
+        });
     };
 
     DOWNLOAD.prototype.add_countries_filter = function(prefix) {

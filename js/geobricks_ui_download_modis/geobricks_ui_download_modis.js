@@ -1,12 +1,12 @@
 define(['jquery',
         'mustache',
-        'text!../geobricks_browse/html/templates.html',
-        'i18n!../geobricks_browse/nls/translate',
+        'text!../geobricks_ui_download_modis/html/templates.html',
+        'i18n!../geobricks_ui_download_modis/nls/translate',
         'bootstrap'], function ($, Mustache, templates, translate) {
 
     'use strict';
 
-    function BROWSE() {
+    function UI_MODIS() {
 
         this.CONFIG = {
             lang: 'en',
@@ -20,7 +20,7 @@ define(['jquery',
      *
      * @param config Custom configuration in JSON format to extend the default settings.
      */
-    BROWSE.prototype.init = function(config) {
+    UI_MODIS.prototype.init = function(config) {
 
         /* Extend default configuration. */
         this.CONFIG = $.extend(true, {}, this.CONFIG, config);
@@ -39,6 +39,6 @@ define(['jquery',
 
     };
 
-    return new BROWSE();
+    return new UI_MODIS();
 
 });

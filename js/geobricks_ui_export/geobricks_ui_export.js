@@ -1,12 +1,12 @@
 define(['jquery',
         'mustache',
-        'text!../geobricks_scheduler/html/templates.html',
-        'i18n!../geobricks_scheduler/nls/translate',
+        'text!../geobricks_ui_export/html/templates.html',
+        'i18n!../geobricks_ui_export/nls/translate',
         'bootstrap'], function ($, Mustache, templates, translate) {
 
     'use strict';
 
-    function SCHEDULER() {
+    function EXPORT() {
 
         this.CONFIG = {
             lang: 'en',
@@ -20,7 +20,7 @@ define(['jquery',
      *
      * @param config Custom configuration in JSON format to extend the default settings.
      */
-    SCHEDULER.prototype.init = function(config) {
+    EXPORT.prototype.init = function(config) {
 
         /* Extend default configuration. */
         this.CONFIG = $.extend(true, {}, this.CONFIG, config);
@@ -39,6 +39,6 @@ define(['jquery',
 
     };
 
-    return new SCHEDULER();
+    return new EXPORT();
 
 });
