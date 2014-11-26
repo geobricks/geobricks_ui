@@ -1,3 +1,6 @@
 [submodule "js/modules/geobricks_ui_home"]
 	path = js/modules/geobricks_ui_home
 	url = https://github.com/geobricks/geobricks_ui_home.git
+[submodule "js/modules/geobricks_ui_browser"]
+	path = js/modules/geobricks_ui_browser
+	url = https://github.com/geobricks/geobricks_ui_browser.git
