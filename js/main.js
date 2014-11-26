@@ -3,14 +3,14 @@ require.config({
     baseUrl: 'js/libs',
 
     paths: {
-        geobricks_ui_navigation_manager: '../geobricks_ui_navigation_manager/geobricks_ui_navigation_manager',
-        geobricks_ui_home: '../geobricks_ui_home/geobricks_ui_home',
-        geobricks_ui_download: '../geobricks_ui_download/geobricks_ui_download',
-        geobricks_ui_download_modis: '../geobricks_ui_download_modis/geobricks_ui_download_modis',
-        geobricks_ui_browse: '../geobricks_ui_browse/geobricks_ui_browse',
-        geobricks_ui_export: '../geobricks_ui_export/geobricks_ui_export',
-        geobricks_ui_scheduler: '../geobricks_ui_scheduler/geobricks_ui_scheduler',
-        geobricks_ui_configuration: '../geobricks_ui_configuration/geobricks_ui_configuration'
+        geobricks_ui_navigation_manager: '../modules/geobricks_ui_navigation_manager/geobricks_ui_navigation_manager',
+        geobricks_ui_home: '../modules/geobricks_ui_home/geobricks_ui_home',
+        geobricks_ui_download: '../modules/geobricks_ui_download/geobricks_ui_download',
+        geobricks_ui_download_modis: '../modules/geobricks_ui_download_modis/geobricks_ui_download_modis',
+        geobricks_ui_browse: '../modules/geobricks_ui_browse/geobricks_ui_browse',
+        geobricks_ui_export: '../modules/geobricks_ui_export/geobricks_ui_export',
+        geobricks_ui_scheduler: '../modules/geobricks_ui_scheduler/geobricks_ui_scheduler',
+        geobricks_ui_configuration: '../modules/geobricks_ui_configuration/geobricks_ui_configuration'
     },
 
     shim: {
