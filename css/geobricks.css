@@ -86,3 +86,10 @@ a {
 
 .top-space-2X {
   margin-top: 64px; }
+
+.download-button {
+  margin-bottom: 32px !important;
+  margin-top: 16px !important;
+  width: 100%;
+  height: 48px;
+  text-transform: uppercase; }

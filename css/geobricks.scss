@@ -123,3 +123,11 @@ $space: 16px;
 .top-space-2X {
   @include top-space(4)
 }
+
+.download-button {
+  margin-bottom: 2 * $space !important;
+  margin-top: $space !important;
+  width: 100%;
+  height: 3 * $space;
+  text-transform: uppercase;
+}
