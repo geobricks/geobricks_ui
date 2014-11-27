@@ -22,3 +22,6 @@
 [submodule "js/modules/geobricks_ui_navigation_manager"]
 	path = js/modules/geobricks_ui_navigation_manager
 	url = https://github.com/geobricks/geobricks_ui_navigation_manager.git
+[submodule "js/modules/geobricks_ui_download_progress"]
+	path = js/modules/geobricks_ui_download_progress
+	url = https://github.com/geobricks/geobricks_ui_download_progress.git
