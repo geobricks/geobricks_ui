@@ -115,6 +115,9 @@ require(['jquery',
                 });
                 $('#datasource_selector').val('MODIS');
                 $('#datasource_selector').trigger('chosen:updated');
+                $('#download_button').click(function() {
+                    MODULE.download();
+                });
             });
         });
     });
