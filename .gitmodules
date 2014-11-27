@@ -4,3 +4,6 @@
 [submodule "js/modules/geobricks_ui_browse"]
 	path = js/modules/geobricks_ui_browse
 	url = https://github.com/geobricks/geobricks_ui_browse.git
+[submodule "js/modules/geobricks_ui_download"]
+	path = js/modules/geobricks_ui_download
+	url = https://github.com/geobricks/geobricks_ui_download.git
