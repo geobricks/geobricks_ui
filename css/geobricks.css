@@ -93,3 +93,9 @@ a {
   width: 100%;
   height: 48px;
   text-transform: uppercase; }
+
+.progress {
+  height: 30px; }
+
+.progress-bar {
+  line-height: 30px; }
