@@ -108,6 +108,10 @@ $space: 16px;
   margin-top: $space * $times
 }
 
+.top-space-05X {
+  margin-top: $space / 2;
+}
+
 .top-space-1X {
   @include top-space(1)
 }
@@ -133,9 +137,15 @@ $space: 16px;
 }
 
 .progress {
-  height: 30px;
+  height: 30px !important;
 }
 
 .progress-bar {
+  line-height: 30px !important;
+}
+
+.progress-report {
+  text-align: center;
+  font-weight: bold;
   line-height: 30px;
 }

@@ -75,6 +75,9 @@ a {
 .search-choice-close {
   top: 12px; }
 
+.top-space-05X {
+  margin-top: 8px; }
+
 .top-space-1X {
   margin-top: 16px; }
 
@@ -95,7 +98,12 @@ a {
   text-transform: uppercase; }
 
 .progress {
-  height: 30px; }
+  height: 30px !important; }
 
 .progress-bar {
+  line-height: 30px !important; }
+
+.progress-report {
+  text-align: center;
+  font-weight: bold;
   line-height: 30px; }
