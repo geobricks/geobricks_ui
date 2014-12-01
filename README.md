@@ -10,3 +10,4 @@ This is the container project for the Geobricks user interface. This project mak
 * [Export](https://github.com/geobricks/geobricks_ui_export)
 * [Scheduler](https://github.com/geobricks/geobricks_ui_scheduler)
 * [Configuration](https://github.com/geobricks/geobricks_ui_configuration)
+* [Processing](https://github.com/geobricks/geobricks_ui_processing)
