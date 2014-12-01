@@ -5,15 +5,16 @@ require.config({
     baseUrl: 'js/libs',
 
     paths: {
-        geobricks_ui_home: root + 'geobricks_ui_home/geobricks_ui_home',
-        geobricks_ui_browse: root + 'geobricks_ui_browse/geobricks_ui_browse',
-        geobricks_ui_export: root + 'geobricks_ui_export/geobricks_ui_export',
-        geobricks_ui_download: root + 'geobricks_ui_download/geobricks_ui_download',
-        geobricks_ui_scheduler: root + 'geobricks_ui_scheduler/geobricks_ui_scheduler',
-        geobricks_ui_configuration: root + 'geobricks_ui_configuration/geobricks_ui_configuration',
-        geobricks_ui_download_modis: root + 'geobricks_ui_download_modis/geobricks_ui_download_modis',
-        geobricks_ui_download_progress: root + 'geobricks_ui_download_progress/geobricks_ui_download_progress',
-        geobricks_ui_navigation_manager: root + 'geobricks_ui_navigation_manager/geobricks_ui_navigation_manager'
+        geobricks_ui_home:                  root + 'geobricks_ui_home/geobricks_ui_home',
+        geobricks_ui_browse:                root + 'geobricks_ui_browse/geobricks_ui_browse',
+        geobricks_ui_export:                root + 'geobricks_ui_export/geobricks_ui_export',
+        geobricks_ui_download:              root + 'geobricks_ui_download/geobricks_ui_download',
+        geobricks_ui_scheduler:             root + 'geobricks_ui_scheduler/geobricks_ui_scheduler',
+        geobricks_ui_processing:            root + 'geobricks_ui_processing/geobricks_ui_processing',
+        geobricks_ui_configuration:         root + 'geobricks_ui_configuration/geobricks_ui_configuration',
+        geobricks_ui_download_modis:        root + 'geobricks_ui_download_modis/geobricks_ui_download_modis',
+        geobricks_ui_download_progress:     root + 'geobricks_ui_download_progress/geobricks_ui_download_progress',
+        geobricks_ui_navigation_manager:    root + 'geobricks_ui_navigation_manager/geobricks_ui_navigation_manager'
     },
 
     shim: {
@@ -113,8 +114,7 @@ require(['jquery',
                     lang: lang,
                     placeholder_id: 'dynamic_filters'
                 });
-                $('#datasource_selector').val('MODIS');
-                $('#datasource_selector').trigger('chosen:updated');
+                $('#datasource_selector').val('MODIS').trigger('chosen:updated');
                 $('#download_button').click(function() {
                     MODULE.download();
                 });
