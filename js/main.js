@@ -5,16 +5,37 @@ require.config({
     baseUrl: 'js/libs',
 
     paths: {
-        geobricks_ui_home:                  root + 'geobricks_ui_home/geobricks_ui_home',
-        geobricks_ui_browse:                root + 'geobricks_ui_browse/geobricks_ui_browse',
-        geobricks_ui_export:                root + 'geobricks_ui_export/geobricks_ui_export',
-        geobricks_ui_download:              root + 'geobricks_ui_download/geobricks_ui_download',
-        geobricks_ui_scheduler:             root + 'geobricks_ui_scheduler/geobricks_ui_scheduler',
-        geobricks_ui_processing:            root + 'geobricks_ui_processing/geobricks_ui_processing',
-        geobricks_ui_configuration:         root + 'geobricks_ui_configuration/geobricks_ui_configuration',
-        geobricks_ui_download_modis:        root + 'geobricks_ui_download_modis/geobricks_ui_download_modis',
-        geobricks_ui_download_progress:     root + 'geobricks_ui_download_progress/geobricks_ui_download_progress',
-        geobricks_ui_navigation_manager:    root + 'geobricks_ui_navigation_manager/geobricks_ui_navigation_manager'
+
+        GEOBRICKS_UI_HOME:                  root + 'geobricks_ui_home/geobricks_ui_home',
+        geobricks_ui_home:                  root + 'geobricks_ui_home',
+
+        GEOBRICKS_UI_BROWSE:                root + 'geobricks_ui_browse/geobricks_ui_browse',
+        geobricks_ui_browse:                root + 'geobricks_ui_browse',
+
+        GEOBRICKS_UI_EXPORT:                root + 'geobricks_ui_export/geobricks_ui_export',
+        geobricks_ui_export:                root + 'geobricks_ui_export',
+
+        GEOBRICKS_UI_DOWNLOAD:              root + 'geobricks_ui_download/geobricks_ui_download',
+        geobricks_ui_download:              root + 'geobricks_ui_download',
+
+        GEOBRICKS_UI_SCHEDULER:             root + 'geobricks_ui_scheduler/geobricks_ui_scheduler',
+        geobricks_ui_scheduler:             root + 'geobricks_ui_scheduler',
+
+        GEOBRICKS_UI_PROCESSING:            root + 'geobricks_ui_processing/geobricks_ui_processing',
+        geobricks_ui_processing:            root + 'geobricks_ui_processing',
+
+        GEOBRICKS_UI_CONFIGURATION:         root + 'geobricks_ui_configuration/geobricks_ui_configuration',
+        geobricks_ui_configuration:         root + 'geobricks_ui_configuration',
+
+        GEOBRICKS_UI_DOWNLOAD_MODIS:        root + 'geobricks_ui_download_modis/geobricks_ui_download_modis',
+        geobricks_ui_download_modis:        root + 'geobricks_ui_download_modis',
+
+        GEOBRICKS_UI_DOWNLOAD_PROGRESS:     root + 'geobricks_ui_download_progress/geobricks_ui_download_progress',
+        geobricks_ui_download_progress:     root + 'geobricks_ui_download_progress',
+
+        GEOBRICKS_UI_NAVIGATION_MANAGER:    root + 'geobricks_ui_navigation_manager/geobricks_ui_navigation_manager',
+        geobricks_ui_navigation_manager:    root + 'geobricks_ui_navigation_manager'
+
     },
 
     shim: {
@@ -61,7 +82,7 @@ require(['jquery',
             require.config({'locale': lang});
 
             /* Build navigation bar. */
-            require(['geobricks_ui_navigation_manager'], function(NAV_MGR) {
+            require(['GEOBRICKS_UI_NAVIGATION_MANAGER'], function(NAV_MGR) {
                 NAV_MGR.init({
                     lang: lang,
                     placeholder_id: 'placeholder'
@@ -73,7 +94,7 @@ require(['jquery',
         route_module: function(module_name) {
             app_router.on('route:' + module_name, function (lang) {
                 this.init_language(lang);
-                require(['geobricks_ui_' + module_name], function (MODULE) {
+                require(['GEOBRICKS_UI_' + module_name.toUpperCase()], function (MODULE) {
                     MODULE.init({
                         lang: lang,
                         placeholder_id: 'main_content'
@@ -104,12 +125,12 @@ require(['jquery',
     /* Initiate Download focused on MODIS. */
     app_router.on('route:download_modis', function (lang) {
         this.init_language(lang);
-        require(['geobricks_ui_download'], function (MODULE) {
+        require(['GEOBRICKS_UI_DOWNLOAD'], function (MODULE) {
             MODULE.init({
                 lang: lang,
                 placeholder_id: 'main_content'
             });
-            require(['geobricks_ui_download_modis'], function (MODULE) {
+            require(['GEOBRICKS_UI_DOWNLOAD_MODIS'], function (MODULE) {
                 MODULE.init({
                     lang: lang,
                     placeholder_id: 'dynamic_filters'
