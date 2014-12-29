@@ -30,6 +30,9 @@ require.config({
         GEOBRICKS_UI_DOWNLOAD_MODIS:        root + 'geobricks_ui_download_modis/geobricks_ui_download_modis',
         geobricks_ui_download_modis:        root + 'geobricks_ui_download_modis',
 
+        GEOBRICKS_UI_DOWNLOAD_TRMM:        root + 'geobricks_ui_download_trmm/geobricks_ui_download_trmm',
+        geobricks_ui_download_trmm:        root + 'geobricks_ui_download_trmm',
+
         GEOBRICKS_UI_DOWNLOAD_PROGRESS:     root + 'geobricks_ui_download_progress/geobricks_ui_download_progress',
         geobricks_ui_download_progress:     root + 'geobricks_ui_download_progress',
 
