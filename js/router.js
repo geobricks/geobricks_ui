@@ -4,6 +4,10 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
 
     function ROUTER() {
 
+        this.CONFIG = {
+            lang: 'en'
+        }
+
     }
 
     ROUTER.prototype.init = function(config) {
@@ -13,6 +17,9 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
 
         /* Fix the language, if needed. */
         this.CONFIG.lang = this.CONFIG.lang !== null ? this.CONFIG.lang : 'en';
+
+        /* This... */
+        var _this = this;
 
         /* Define the router. */
         var AppRouter = Backbone.Router.extend({
@@ -33,8 +40,14 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
             init_language: function (lang) {
 
                 /* Initiate language. */
-                lang = (lang != null) ? lang : 'en';
+                lang = (lang !== null) ? lang : 'en';
                 require.config({'locale': lang});
+                var locale = localStorage.getItem('locale');
+                localStorage.setItem('locale', lang);
+                if (locale !== lang) {
+                    localStorage.setItem('locale', lang);
+                    location.reload();
+                }
 
                 /* Build navigation bar. */
                 require(['GEOBRICKS_UI_NAVIGATION_MANAGER'], function(NAV_MGR) {
@@ -46,16 +59,33 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
 
             },
 
+            /* Generic routing function. */
             route_module: function(module_name) {
+
                 app_router.on('route:' + module_name, function (lang) {
+
+                    /* Setup language. */
                     this.init_language(lang);
+
+                    /* Require module. */
                     require(['GEOBRICKS_UI_' + module_name.toUpperCase()], function (MODULE) {
-                        MODULE.init({
+
+                        /* Module's configurations. */
+                        var config = {
                             lang: lang,
                             placeholder_id: 'main_content'
-                        });
+                        };
+
+                        /* Propagate central configuration. */
+                        config = $.extend(true, {}, config, _this.CONFIG[module_name]);
+
+                        /* Initiate the module. */
+                        MODULE.init(config);
+
                     });
+
                 });
+
             }
 
         });
@@ -79,23 +109,7 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
 
         /* Initiate Download focused on MODIS. */
         app_router.on('route:download_modis', function (lang) {
-            this.init_language(lang);
-            require(['GEOBRICKS_UI_DOWNLOAD'], function (MODULE) {
-                MODULE.init({
-                    lang: lang,
-                    placeholder_id: 'main_content'
-                });
-                require(['GEOBRICKS_UI_DOWNLOAD_MODIS'], function (MODULE) {
-                    MODULE.init({
-                        lang: lang,
-                        placeholder_id: 'dynamic_filters'
-                    });
-                    $('#datasource_selector').val('MODIS').trigger('chosen:updated');
-                    $('#download_button').click(function() {
-                        MODULE.download();
-                    });
-                });
-            });
+            /* TODO: missing implementation. */
         });
 
         /* Initiate Backbone history. */

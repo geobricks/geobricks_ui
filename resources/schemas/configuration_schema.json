@@ -11,6 +11,17 @@
       }
    },
    "properties": {
-
+      "download": {
+         "type": "object",
+         "title": "Geobricks Download",
+         "description": "Data acquisition from publicly available datasources.",
+         "properties": {
+            "url_datasources": {
+               "type": "string",
+               "format": "url",
+               "default": "http://localhost:5555/discovery/datasource/"
+            }
+         }
+      }
    }
 }
