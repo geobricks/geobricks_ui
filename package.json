@@ -27,6 +27,7 @@
    },
    "devDependencies": {
       "grunt": "~0.4.5",
-      "grunt-markdown": "~0.7.0"
+      "grunt-markdown": "~0.7.0",
+      "json-schema-defaults": "~0.1.1"
    }
 }

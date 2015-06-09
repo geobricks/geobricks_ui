@@ -1,0 +1,16 @@
+{
+   "$schema": "http://json-schema.org/draft-04/schema#",
+   "type": "object",
+   "title": "FAOSTAT",
+   "description": "FAOSTAT",
+   "definitions": {
+      "lang": {
+         "type": "string",
+         "default": "en",
+         "enum": ["en", "fr", "es", "ar", "cn", "ru"]
+      }
+   },
+   "properties": {
+
+   }
+}
