@@ -28,3 +28,21 @@
 [submodule "js/modules/geobricks_ui_processing"]
 	path = js/modules/geobricks_ui_processing
 	url = https://github.com/geobricks/geobricks_ui_processing.git
+[submodule "submodules/geobricks_ui_home"]
+	path = submodules/geobricks_ui_home
+	url = https://github.com/geobricks/geobricks_ui_home.git
+[submodule "submodules/geobricks_ui_scheduler"]
+	path = submodules/geobricks_ui_scheduler
+	url = https://github.com/geobricks/geobricks_ui_scheduler.git
+[submodule "submodules/geobricks_ui_processing"]
+	path = submodules/geobricks_ui_processing
+	url = https://github.com/geobricks/geobricks_ui_processing.git
+[submodule "submodules/geobricks_ui_navigation_manager"]
+	path = submodules/geobricks_ui_navigation_manager
+	url = https://github.com/geobricks/geobricks_ui_navigation_manager.git
+[submodule "submodules/geobricks_ui_export"]
+	path = submodules/geobricks_ui_export
+	url = https://github.com/geobricks/geobricks_ui_export.git
+[submodule "submodules/geobricks_ui_download_progress"]
+	path = submodules/geobricks_ui_download_progress
+	url = https://github.com/geobricks/geobricks_ui_download_progress.git
