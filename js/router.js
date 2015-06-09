@@ -80,7 +80,8 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
                         config = $.extend(true, {}, config, _this.CONFIG[module_name]);
 
                         /* Initiate the module. */
-                        MODULE.init(config);
+                        var mod = new MODULE();
+                        mod.init(config);
 
                     });
 
@@ -96,7 +97,6 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
         /* Define modules. */
         var modules = [
             'home',
-            'download',
             'browse',
             'export',
             'scheduler',
@@ -106,6 +106,35 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
         /* Route modules. */
         for (var module in modules)
             app_router.route_module(modules[module]);
+
+        /* Initiate Download. */
+        app_router.on('route:download', function (lang) {
+
+            /* Setup language. */
+            this.init_language(lang);
+
+            /* Require module. */
+            require(['GEOBRICKS_UI_DOWNLOAD'], function (DWLD) {
+
+                /* Download configurations. */
+                var config = {
+                    lang: lang,
+                    placeholder_id: 'main_content'
+                };
+
+                /* Propagate central configuration. */
+                config = $.extend(true, {}, config, _this.CONFIG['download']);
+
+                /* Initiate the Download. */
+                var dwld = new DWLD();
+                dwld.init(config);
+
+                /* Build datasource filters. */
+                dwld.render_main_structure();
+
+            });
+
+        });
 
         /* Initiate Download focused on selected datasource. */
         app_router.on('route:download_datasource', function (lang, datasource) {
@@ -126,10 +155,11 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
                 config = $.extend(true, {}, config, _this.CONFIG['download']);
 
                 /* Initiate the Download. */
-                DWLD.init(config);
+                var dwld = new DWLD();
+                dwld.init(config);
 
                 /* Build datasource filters. */
-                DWLD.render_main_structure(datasource);
+                dwld.render_main_structure(datasource);
 
             });
 
