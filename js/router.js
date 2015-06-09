@@ -26,14 +26,14 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
 
             /* Define the routes. */
             routes: {
-                ''                                  :   'home',
-                '(/):lang(/)home(/)'                :   'home',
-                '(/):lang(/)download(/)'            :   'download',
-                '(/):lang(/)download(/)modis(/)'    :   'download_modis',
-                '(/):lang(/)browse(/)'              :   'browse',
-                '(/):lang(/)export(/)'              :   'export',
-                '(/):lang(/)scheduler(/)'           :   'scheduler',
-                '(/):lang(/)configuration(/)'       :   'configuration'
+                ''                                      :   'home',
+                '(/):lang(/)home(/)'                    :   'home',
+                '(/):lang(/)download(/)'                :   'download',
+                '(/):lang(/)download(/):datasource(/)'  :   'download_datasource',
+                '(/):lang(/)browse(/)'                  :   'browse',
+                '(/):lang(/)export(/)'                  :   'export',
+                '(/):lang(/)scheduler(/)'               :   'scheduler',
+                '(/):lang(/)configuration(/)'           :   'configuration'
             },
 
             /* Overwrite language settings. */
@@ -107,9 +107,32 @@ define(['jquery', 'backbone', 'domReady!'], function($, Backbone) {
         for (var module in modules)
             app_router.route_module(modules[module]);
 
-        /* Initiate Download focused on MODIS. */
-        app_router.on('route:download_modis', function (lang) {
-            /* TODO: missing implementation. */
+        /* Initiate Download focused on selected datasource. */
+        app_router.on('route:download_datasource', function (lang, datasource) {
+
+            /* Setup language. */
+            this.init_language(lang);
+
+            /* Require module. */
+            require(['GEOBRICKS_UI_DOWNLOAD'], function (DWLD) {
+
+                /* Download configurations. */
+                var config = {
+                    lang: lang,
+                    placeholder_id: 'main_content'
+                };
+
+                /* Propagate central configuration. */
+                config = $.extend(true, {}, config, _this.CONFIG['download']);
+
+                /* Initiate the Download. */
+                DWLD.init(config);
+
+                /* Build datasource filters. */
+                DWLD.render_main_structure(datasource);
+
+            });
+
         });
 
         /* Initiate Backbone history. */

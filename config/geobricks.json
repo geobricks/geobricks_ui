@@ -1,1 +1,11 @@
-{"download":{"url_datasources":"http://localhost:5555/discovery/datasource/"}}
+{
+   "download": {
+      "url_datasources": "http://localhost:5555/discovery/datasource/",
+      "modis": {
+         "url_products": "http://localhost:5555/browse/modis/",
+         "url_download": "http://localhost:5555/download/modis/",
+         "url_countries": "http://localhost:5555/browse/modis/countries/",
+         "url_browse_modis": "http://localhost:5555/browse/modis/"
+      }
+   }
+}
