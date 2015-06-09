@@ -1,33 +1,3 @@
-[submodule "js/modules/geobricks_ui_home"]
-	path = js/modules/geobricks_ui_home
-	url = https://github.com/geobricks/geobricks_ui_home.git
-[submodule "js/modules/geobricks_ui_browse"]
-	path = js/modules/geobricks_ui_browse
-	url = https://github.com/geobricks/geobricks_ui_browse.git
-[submodule "js/modules/geobricks_ui_download"]
-	path = js/modules/geobricks_ui_download
-	url = https://github.com/geobricks/geobricks_ui_download.git
-[submodule "js/modules/geobricks_ui_download_modis"]
-	path = js/modules/geobricks_ui_download_modis
-	url = https://github.com/geobricks/geobricks_ui_download_modis.git
-[submodule "js/modules/geobricks_ui_scheduler"]
-	path = js/modules/geobricks_ui_scheduler
-	url = https://github.com/geobricks/geobricks_ui_scheduler.git
-[submodule "js/modules/geobricks_ui_configuration"]
-	path = js/modules/geobricks_ui_configuration
-	url = https://github.com/geobricks/geobricks_ui_configuration.git
-[submodule "js/modules/geobricks_ui_export"]
-	path = js/modules/geobricks_ui_export
-	url = https://github.com/geobricks/geobricks_ui_export.git
-[submodule "js/modules/geobricks_ui_navigation_manager"]
-	path = js/modules/geobricks_ui_navigation_manager
-	url = https://github.com/geobricks/geobricks_ui_navigation_manager.git
-[submodule "js/modules/geobricks_ui_download_progress"]
-	path = js/modules/geobricks_ui_download_progress
-	url = https://github.com/geobricks/geobricks_ui_download_progress.git
-[submodule "js/modules/geobricks_ui_processing"]
-	path = js/modules/geobricks_ui_processing
-	url = https://github.com/geobricks/geobricks_ui_processing.git
 [submodule "submodules/geobricks_ui_home"]
 	path = submodules/geobricks_ui_home
 	url = https://github.com/geobricks/geobricks_ui_home.git
